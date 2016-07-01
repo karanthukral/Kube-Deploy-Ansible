@@ -1,0 +1,16 @@
+---
+- name: Install docker
+  include: docker.yml
+
+- name: Get kube-deploy script
+  git: repo=https://github.com/kubernetes/kube-deploy.git dest=/tmp/kube-deploy
+
+- name: Run Master on master
+  shell: cd /tmp/kube-deploy/docker-multinode; ./master.sh
+  when: current_ip == master_ip
+
+- name: Run worker
+  environment:
+    MASTER_IP: "{{master_ip}}"
+  shell: printenv; cd /tmp/kube-deploy/docker-multinode; ./worker.sh
+  when: current_ip != master_ip

@@ -1,0 +1,5 @@
+---
+# vars file for kube-deploy
+kernel: "{{ansible_kernel | regex_replace('^(?P<version>\\d+.\\d+.\\d+).+', '\\g<version>') }}"
+master_ip:
+current_ip: ansible_default_ipv4.address
