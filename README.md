@@ -1,38 +1,39 @@
-Role Name
+kube-deploy
 =========
 
-A brief description of the role goes here.
+Ansible role to install docker and deploy kubernetes on an Ubuntu cluster. The deployment uses docker to run the required kubernetes components. The install script can be found at [docker-multinode](https://github.com/kubernetes/kube-deploy/tree/master/docker-multinode)
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role currently only supports ubuntu.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+`master_ip` is required by the role to ensure the correct components are installed on the master node vs the worker node.
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role does not have any dependencies.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
+---
+- vars:
+    master_ip: 64.x.x.x
+  hosts: kube-cluster
+
+  roles:
+    - kube-deploy
+```
+
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
