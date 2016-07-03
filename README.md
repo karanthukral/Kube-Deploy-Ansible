@@ -56,6 +56,10 @@ users:
 - Run `kubectl get nodes` and you should see all your nodes
 - Congratulations you have a working kubernetes cluster
 
+Blog
+-------
+- If you want more information on how this works, check out a [blog post](https://medium.com/@kthukral/kubernetes-on-bare-metal-8e41b7025014#.ab8egoz67) I wrote. 
+
 
 License
 -------
