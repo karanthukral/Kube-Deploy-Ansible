@@ -32,6 +32,30 @@ Including an example of how to use your role (for instance, with variables passe
     - kube-deploy
 ```
 
+Testing
+-----------
+- Install `kubectl` (`brew install kubectl`)
+- Create the kube config at `~/.kube/config`
+- Example kube config
+```
+apiVersion: v1
+clusters:
+- cluster:
+    server: http://<IP_ADDRESS>:8080
+  name: my-cluster
+contexts:
+- context:
+    cluster: my-cluster
+    user: ""
+  name: my-context
+current-context: my-context
+kind: Config
+preferences: {}
+users:
+```
+- Run `kubectl get nodes` and you should see all your nodes
+- Congratulations you have a working kubernetes cluster
+
 
 License
 -------
